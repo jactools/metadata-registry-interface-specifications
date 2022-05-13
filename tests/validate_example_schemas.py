@@ -7,8 +7,8 @@ from pathlib import Path
 class ValidateExampleSchemas(unittest.TestCase):
 
     version = "0.2.0"
-    base_schema_directory = "../schemas/interface/" + version + "/"
-    base_test_resources_directory = "../test_resources/" + version + "/"
+    base_schema_directory = "../metadata/schemas/interface/" + version + "/"
+    base_test_resources_directory = "../tests/resources/" + version + "/"
 
     def test_physical_entity_schema(self):
         json_document = self.base_test_resources_directory + "correct_entity_source.json"

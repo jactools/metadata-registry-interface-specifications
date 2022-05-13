@@ -36,14 +36,14 @@ In the metadata we will expect "customer_info" as technical entity name.
 
 > NOTE: this is the first iteration of the documentation, explaining the basics of the interfaces. Going forward we will build up a full fledged manual with many more examples and references. Your feedback is valuable!
 
-## Installation
+## Contribute
 
 The python script in this repository verifies sample json files against the json schemas.
-It was built for Python 3.6.
+Python versions tested: 3.6, 3.8, 3.9
 
 ```
 # Clone repository
-git clone https://github.com/jacbeekers/metadata-registry-interface-specifications
+git clone https://github.com/jactools/metadata-registry-interface-specifications
 cd metadata-registry-interface-specifications
 
 # Create a virtualenv
@@ -56,12 +56,30 @@ venv\Scripts\activate
 # Enable proxy (optional)
 export https_proxy=<some_proxy>:8080
 
+# Copy the version file to temp, so the number can be increased automatically
+mkdir -p temp
+cp -p plugins/__init__.py temp/_tmp_version.tmp
+
 # Install package requirements
 pip3 install -r requirements.txt
 ```
 
 ## Testing
-The unit test python script can be run from the command line or from PyCharm.
+After following the steps mentioned in Contributing, test the example json files against the schema version. Change validate_example_schemas.py to point to the correct directories and schema version.
+Make sure you've activated the virtual environment.
+
+```
+cd tests
+(venv) me@Home tests % python3 validate_example_schemas.py
+```
+Output:
+```
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.006s
+
+OK
+```
 
 ---
 That's it! Read on in [USAGE.md](USAGE.md) to learn more, check [CONTRIBUTING.md](CONTRIBUTING.md) to get in touch and [TODO.md](TODO.md) to see a list of known issues.
