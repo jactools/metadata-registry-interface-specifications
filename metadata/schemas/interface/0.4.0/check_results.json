@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/jacbeekers/metadata-registry-interface-specifications/blob/master/metadata/schemas/interface/0.4.0/check_results.json",
+  "title": "The results of the checks",
+  "description": "The result of the validation checks conducted by the controls",
+  "required": [
+    "meta",
+    "meta_version",
+    "result_list",
+    "version"
+  ],
+  "type": "object",
+  "properties": {
+    "meta": {
+      "type": "string",
+      "description": "metadata type",
+      "enum": [
+        "check_results"
+      ]
+    },
+    "meta_version": {
+      "type": "string",
+      "description": "the meta structure version for the object",
+      "pattern": "^([0-9]+).([0-9]+).*$"
+    },
+    "version": {
+      "type": "string",
+      "description": "version of the object definition",
+      "pattern": "^([0-9]+).([0-9]+).([0-9]+)$"
+    },
+    "result_list": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/result"
+      },
+      "uniqueItems": true
+    }
+  },
+    "definitions": {
+      "result": {
+        "type": "object",
+        "required": [
+          "uid",
+          "name"
+        ],
+        "properties": {
+          "uid": {
+            "description": "The unique identifier of the result item.",
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^(.+)-(.+)-(.+)$"
+          },
+          "check_name": {
+            "description": "The name of the check.",
+            "type": "string"
+          },
+          "check_version": {
+            "description": "The check version",
+            "type": "string"
+          },
+          "description": {
+            "description": "The description of the check.",
+            "type": "string"
+          },
+          "data_set": {
+            "description": "The name of the data set",
+            "type": "string"
+          },
+          "data_object": {
+            "description": "The name of the data object in the dataset. Leave empty for data set checks.",
+            "type": "string"
+          },
+          "data_object_version": {
+            "description": "The version of the data object",
+            "type": "string"
+          },
+          "attribute": {
+            "description": "The attribute the check was run against. Leave empty for data object checks.",
+            "type": "string"
+          },
+          "expressed_expectation": {
+            "description": "The expressed expectation",
+            "type": "string"
+          },
+          "actual_value": {
+            "description": "The actual value",
+            "type": "string"
+          },
+          "check_outcome": {
+            "description": "The outcome of the check",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+
